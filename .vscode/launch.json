@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DutyExchangeApplication<duty-exchange>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.nmit.dutyexchange.DutyExchangeApplication",
+            "projectName": "duty-exchange",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

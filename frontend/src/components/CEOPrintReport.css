@@ -1,0 +1,362 @@
+/* ================================================================
+   CEOPrintReport.css
+   Styles for the CEO Consolidated Faculty Duty Exchange Report
+   ================================================================ */
+
+/* ── Overlay (screen only) ── */
+.ceo-report-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 20, 0.85);
+    z-index: 9000;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ── Action bar (screen only) ── */
+.ceo-report-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 12px;
+    padding: 14px 24px;
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    gap: 12px;
+}
+
+.ceo-report-title-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    letter-spacing: 0.02em;
+}
+
+.ceo-report-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-ceo-print {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 22px;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+    min-width: unset;
+}
+
+.btn-ceo-print:hover {
+    background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.55);
+}
+
+.btn-ceo-close {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 18px;
+    background: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: unset;
+}
+
+.btn-ceo-close:hover {
+    background: rgba(239, 68, 68, 0.3);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+/* ── Report page ── */
+.ceo-report-page {
+    box-sizing: border-box;
+    background: white;
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 10px;
+    padding: 28px 32px 36px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+    color: #111;
+}
+
+/* ── Header ── */
+.ceo-report-header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #1e293b;
+    padding-bottom: 14px;
+}
+
+.ceo-report-institution {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 4px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.ceo-report-subtitle {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e40af;
+    margin: 0 0 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.ceo-report-meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    font-size: 0.82rem;
+    color: #4b5563;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* ── Table ── */
+.ceo-report-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+    margin-bottom: 28px;
+    table-layout: fixed;
+}
+
+.ceo-report-table th,
+.ceo-report-table td {
+    border: 1px solid #9ca3af;
+    padding: 6px 7px;
+    vertical-align: middle;
+    word-wrap: break-word;
+}
+
+.ceo-report-table thead tr {
+    background: #1e293b;
+    color: white;
+}
+
+.ceo-report-table th {
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+/* Column widths */
+.col-sl               { width: 5%; }
+.col-date             { width: 9%; }
+.col-faculty          { width: 14%; }
+.col-dept             { width: 11%; }
+.col-duty             { width: 11%; }
+.col-exchange-faculty { width: 14%; }
+.col-exchange-dept    { width: 11%; }
+.col-exchange-duty    { width: 11%; }
+.col-hod              { width: 7%; }
+.col-ceo              { width: 7%; }
+
+.center { text-align: center; }
+
+/* Row zebra */
+.ceo-report-table tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+.ceo-report-table tbody tr:hover {
+    background: #eff6ff;
+}
+
+/* Status colours (screen) */
+.status-approved  { color: #15803d; font-weight: 700; }
+.status-rejected  { color: #dc2626; font-weight: 700; }
+.status-pending   { color: #d97706; font-weight: 700; }
+.status-na, .status-n\/a { color: #6b7280; font-weight: 600; }
+
+/* Duty badge */
+.duty-type-badge {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1e40af;
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+}
+
+.duty-date {
+    font-size: 0.72rem;
+    color: #374151;
+}
+
+/* No data */
+.ceo-no-data {
+    text-align: center;
+    padding: 30px;
+    color: #9ca3af;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* ── Footer signature ── */
+.ceo-report-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.footer-sign-block {
+    text-align: center;
+    width: 200px;
+}
+
+.footer-sign-line {
+    border-top: 1.5px solid #374151;
+    margin-bottom: 6px;
+}
+
+.footer-sign-block p {
+    font-size: 0.8rem;
+    color: #374151;
+    font-weight: 600;
+    margin: 0;
+}
+
+
+/* ================================================================
+   PRINT MEDIA – CEO Report
+   ================================================================ */
+@media print {
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        max-width: 100vw !important;
+    }
+
+    /* Hide the normal dashboard elements when printing the CEO report */
+    body.ceo-printing .menubar-container,
+    body.ceo-printing .management-header,
+    body.ceo-printing .management-content {
+        display: none !important;
+    }
+
+    /* The overlay covers the viewport; make it the only thing printed */
+    body.ceo-printing .ceo-report-overlay {
+        position: static !important;
+        background: transparent !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        display: block !important;
+    }
+
+    /* Hide the action bar */
+    .no-print,
+    .ceo-report-actions {
+        display: none !important;
+    }
+
+    /* Report page – full width, white background */
+    .ceo-report-page {
+        box-sizing: border-box !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 auto !important; 
+        background: white !important;
+        color: black !important;
+        overflow-x: hidden !important; 
+    }
+
+    @page {
+        size: landscape;
+        margin: 5mm;
+    }
+
+    .ceo-report-table th,
+    .ceo-report-table td {
+        font-size: 7.5pt !important;
+        padding: 2px !important;
+        border: 1px solid #555 !important;
+        color: black !important;
+        word-break: break-all !important;
+        overflow-wrap: break-word !important;
+    }
+
+    .ceo-report-table thead tr {
+        background: #ddd !important;
+        color: black !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .ceo-report-table th {
+        font-size: 7.5pt !important;
+        padding: 2px !important;
+    }
+
+    .ceo-report-table tbody tr:nth-child(even) {
+        background: #f5f5f5 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .ceo-report-institution {
+        font-size: 16pt !important;
+    }
+
+    .ceo-report-subtitle {
+        font-size: 11pt !important;
+    }
+
+    .ceo-report-meta {
+        font-size: 8pt !important;
+    }
+
+    .duty-type-badge {
+        background: #ddd !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .status-approved { color: #155724 !important; }
+    .status-rejected { color: #721c24 !important; }
+    .status-pending  { color: #856404 !important; }
+
+    /* Avoid table rows splitting across pages */
+    .ceo-report-table tr {
+        page-break-inside: avoid;
+    }
+
+    .ceo-report-header {
+        page-break-after: avoid;
+    }
+}
