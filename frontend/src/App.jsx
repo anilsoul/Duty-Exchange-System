@@ -12,6 +12,7 @@ import Profile from './components/Profile'
 import LoginSelection from './components/Login/LoginSelection'
 import RoleLogin from './components/Login/RoleLogin'
 import RoleSignUp from './components/Login/RoleSignUp'
+import ForgotPassword from './components/Login/ForgotPassword'
 
 // Protected Route Wrapper
 const RequireAuth = ({ children }) => {
@@ -56,6 +57,7 @@ function App() {
         <Route path="/login" element={<LoginSelection />} />
         <Route path="/login/:role" element={<RoleLogin />} />
         <Route path="/signup/:role" element={<RoleSignUp />} />
+        <Route path="/forgot-password/:role" element={<ForgotPassword />} />
 
         {/* Protected Application Routes */}
         <Route path="/*" element={
