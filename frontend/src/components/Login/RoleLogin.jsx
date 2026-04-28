@@ -102,7 +102,16 @@ const RoleLogin = ({ onLogin }) => {
                     <div className="form-group">
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <label>Password</label>
-                            <a href="#" className="forgot-password" onClick={(e) => e.preventDefault()}>Forgot password?</a>
+                            <a 
+                                href="#" 
+                                className="forgot-password" 
+                                onClick={(e) => { 
+                                    e.preventDefault(); 
+                                    navigate(`/forgot-password/${normalizedRole.toLowerCase()}`); 
+                                }}
+                            >
+                                Forgot password?
+                            </a>
                         </div>
                         <input
                             type="password"
