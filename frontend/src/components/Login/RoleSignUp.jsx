@@ -81,7 +81,7 @@ const RoleSignUp = () => {
     return (
         <div className="login-page-container">
             <div className="login-glass-card narrow">
-                <div style={{ textAlign: 'left', marginBottom: '1rem' }}>
+                <div style={{ textAlign: 'left', marginBottom: '0.5rem' }}>
                     <button 
                         type="button" 
                         className="btn-back-top" 
