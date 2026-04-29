@@ -120,7 +120,7 @@ const DutyExchangeForm = () => {
 
         try {
             // Send data to backend before printing
-            const response = await fetch('http://localhost:8080/api/duty-exchange', {
+            const response = await fetch('https://duty-exchange-system.onrender.com/api/duty-exchange', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

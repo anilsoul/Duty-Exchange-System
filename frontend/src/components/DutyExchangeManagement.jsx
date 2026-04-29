@@ -26,7 +26,7 @@ const DutyExchangeManagement = () => {
     React.useEffect(() => {
         const fetchExchanges = async () => {
             try {
-                const response = await fetch('http://localhost:8080/api/duty-exchange');
+                const response = await fetch('https://duty-exchange-system.onrender.com/api/duty-exchange');
                 if (response.ok) {
                     const data = await response.json();
                     // Transformation might be needed if backend field names differ slightly
@@ -92,7 +92,7 @@ const DutyExchangeManagement = () => {
     const handleApprove = async (id, role) => {
         const endpoint = role === 'ceo' ? `approve-ceo` : `approve-hod`;
         try {
-            const response = await fetch(`http://localhost:8080/api/duty-exchange/${id}/${endpoint}`, {
+            const response = await fetch(`https://duty-exchange-system.onrender.com/api/duty-exchange/${id}/${endpoint}`, {
                 method: 'POST',
                 headers: {
                     'X-User-Role': userRole.toUpperCase()
@@ -120,7 +120,7 @@ const DutyExchangeManagement = () => {
     const handleReject = async (id, role) => {
         const endpoint = role === 'ceo' ? `reject-ceo` : `reject-hod`;
         try {
-            const response = await fetch(`http://localhost:8080/api/duty-exchange/${id}/${endpoint}`, {
+            const response = await fetch(`https://duty-exchange-system.onrender.com/api/duty-exchange/${id}/${endpoint}`, {
                 method: 'POST',
                 headers: {
                     'X-User-Role': userRole.toUpperCase()
@@ -651,7 +651,7 @@ const DutyExchangeManagement = () => {
                                 <button
                                     className="btn-modal-approve"
                                     style={{ backgroundColor: '#10b981' }}
-                                    onClick={() => window.open(`http://localhost:8080/api/duty-exchange/${selectedExchange.id}/pdf`, '_blank')}
+                                    onClick={() => window.open(`https://duty-exchange-system.onrender.com/api/duty-exchange/${selectedExchange.id}/pdf`, '_blank')}
                                 >
                                     <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" style={{marginRight: '6px', verticalAlign: 'text-bottom'}}>
                                         <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" />
