@@ -121,4 +121,9 @@ public class DutyExchangeController {
         }
         return ResponseEntity.ok(service.updateHodStatus(id, "REJECTED"));
     }
+
+    @GetMapping("/")
+    public String home() {
+        return "Backend is running successfully!";
+    }
 }
