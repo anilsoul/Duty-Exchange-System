@@ -12,7 +12,7 @@ const RoleSignUp = () => {
         normalizedRole === 'HOD' || normalizedRole === 'CEO'
             ? normalizedRole
             : 'Faculty';
-
+    // redeploy trigger
     const [name, setName] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
