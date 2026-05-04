@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import './Login.css';
 
 const RoleLogin = ({ onLogin }) => {
@@ -14,6 +15,7 @@ const RoleLogin = ({ onLogin }) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
 
     const handleLogin = (e) => {
@@ -40,7 +42,10 @@ const RoleLogin = ({ onLogin }) => {
 
         // Registration check logic
         const registeredUsers = JSON.parse(localStorage.getItem('registered_users') || '[]');
-        const user = registeredUsers.find(u => u.email === trimmedUsername && u.role === normalizedRole);
+        const user = registeredUsers.find(u => 
+            (u.email || '').toLowerCase() === trimmedUsername.toLowerCase() && 
+            (u.role || '').toUpperCase() === normalizedRole.toUpperCase()
+        );
 
         if (!user) {
             setError('User not found. Please register as ' + displayRole + ' first.');
@@ -113,12 +118,19 @@ const RoleLogin = ({ onLogin }) => {
                                 Forgot password?
                             </a>
                         </div>
-                        <input
-                            type="password"
-                            placeholder="Enter your secure password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
+                        <div className="password-wrapper">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                placeholder="Enter your secure password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            {showPassword ? (
+                                <FaEyeSlash className="eye-icon" onClick={() => setShowPassword(false)} />
+                            ) : (
+                                <FaEye className="eye-icon" onClick={() => setShowPassword(true)} />
+                            )}
+                        </div>
                     </div>
 
                     <button type="submit" className="btn-login">

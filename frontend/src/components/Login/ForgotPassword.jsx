@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import './Login.css';
 
 const ForgotPassword = () => {
@@ -15,6 +16,8 @@ const ForgotPassword = () => {
     const [username, setUsername] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [showNewPassword, setShowNewPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
 
@@ -47,7 +50,10 @@ const ForgotPassword = () => {
 
         // Check if user exists
         const registeredUsers = JSON.parse(localStorage.getItem('registered_users') || '[]');
-        const userIndex = registeredUsers.findIndex(u => u.email === trimmedUsername && u.role === normalizedRole);
+        const userIndex = registeredUsers.findIndex(u => 
+            (u.email || '').toLowerCase() === trimmedUsername.toLowerCase() && 
+            (u.role || '').toUpperCase() === normalizedRole.toUpperCase()
+        );
         
         if (userIndex === -1) {
             setError(`Account with this email not found for ${displayRole} role.`);
@@ -103,22 +109,36 @@ const ForgotPassword = () => {
                         
                         <div className="form-group">
                             <label>New Password</label>
-                            <input 
-                                type="password" 
-                                placeholder="Enter new secure password"
-                                value={newPassword}
-                                onChange={(e) => setNewPassword(e.target.value)}
-                            />
+                            <div className="password-wrapper">
+                                <input 
+                                    type={showNewPassword ? 'text' : 'password'} 
+                                    placeholder="Enter new secure password"
+                                    value={newPassword}
+                                    onChange={(e) => setNewPassword(e.target.value)}
+                                />
+                                {showNewPassword ? (
+                                    <FaEyeSlash className="eye-icon" onClick={() => setShowNewPassword(false)} />
+                                ) : (
+                                    <FaEye className="eye-icon" onClick={() => setShowNewPassword(true)} />
+                                )}
+                            </div>
                         </div>
 
                         <div className="form-group">
                             <label>Confirm New Password</label>
-                            <input 
-                                type="password" 
-                                placeholder="Confirm new password"
-                                value={confirmPassword}
-                                onChange={(e) => setConfirmPassword(e.target.value)}
-                            />
+                            <div className="password-wrapper">
+                                <input 
+                                    type={showConfirmPassword ? 'text' : 'password'} 
+                                    placeholder="Confirm new password"
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                />
+                                {showConfirmPassword ? (
+                                    <FaEyeSlash className="eye-icon" onClick={() => setShowConfirmPassword(false)} />
+                                ) : (
+                                    <FaEye className="eye-icon" onClick={() => setShowConfirmPassword(true)} />
+                                )}
+                            </div>
                         </div>
                         
                         <button type="submit" className="btn-login" style={{ marginTop: '0.5rem' }}>

@@ -62,7 +62,8 @@ const RoleSignUp = () => {
         );
 
         const userExists = registeredUsers.some(
-            (u) => u.email === trimmedUsername && u.role === normalizedRole
+            (u) => (u.email || '').toLowerCase() === trimmedUsername.toLowerCase() && 
+                   (u.role || '').toUpperCase() === normalizedRole.toUpperCase()
         );
 
         if (userExists) {
