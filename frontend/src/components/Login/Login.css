@@ -289,3 +289,9 @@
     color: white;
     font-size: 18px;
 }
+
+/* Hide browser default password reveal icons (especially in Edge) */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
