@@ -1,7 +1,7 @@
 package com.nmit.dutyexchange.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -13,11 +13,14 @@ public class EmailService {
     @Autowired
     private JavaMailSender emailSender;
 
+    @Value("${app.mail.sender:Subhir625@gmail.com}")
+    private String senderEmail;
+
     public void sendSimpleMessage(String to,
             String subject, String text) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("Subhir625@gmail.com");
+            message.setFrom(senderEmail);
             message.setTo(to);
             message.setSubject(subject);
             message.setText(text);
@@ -37,7 +40,7 @@ public class EmailService {
             org.springframework.mail.javamail.MimeMessageHelper helper = new org.springframework.mail.javamail.MimeMessageHelper(
                     message, true);
 
-            helper.setFrom("Subhir625@gmail.com");
+            helper.setFrom(senderEmail);
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(text);
@@ -55,7 +58,7 @@ public class EmailService {
             String subject, String text) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("Subhir625@gmail.com");
+            message.setFrom(senderEmail);
             message.setTo(to);
             message.setSubject(subject);
             message.setText(text);
@@ -75,7 +78,7 @@ public class EmailService {
             org.springframework.mail.javamail.MimeMessageHelper helper = new org.springframework.mail.javamail.MimeMessageHelper(
                     message, true);
 
-            helper.setFrom("Subhir625@gmail.com");
+            helper.setFrom(senderEmail);
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(text);
