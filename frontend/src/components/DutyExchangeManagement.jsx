@@ -673,7 +673,7 @@ const DutyExchangeManagement = () => {
             {/* CEO Consolidated Print Report */}
             {showCeoReport && userRole.toUpperCase() === 'CEO' && (
                 <CEOPrintReport
-                    exchanges={filteredExchanges}
+                    exchanges={filteredExchanges.filter(ex => ex.status === 'approved')}
                     onClose={() => setShowCeoReport(false)}
                 />
             )}
